@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MainPageView: UIViewController {
+class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
 
     let sampleData: [Clinics] = [
         Clinics(title: "110年六月肺鏈\n及流感疫苗施打", vaccine: "新冠肺炎:\nBioNTech(BNT)", region: "內湖區", village: "西康里", registrationDate: "2020/04/10 08:00-2020/04/10 20:00", availableQuota: "3000", maxQuota: "12000", inspected: "100", admissionDate: "2020/04/10 08:30 - 11:30"),
@@ -59,13 +59,22 @@ class MainPageView: UIViewController {
     private lazy var dropDownButton: UIButton = {
         let button = UIButton(frame: CGRect(x: FULL_WIDTH-48, y: 56, width: 32, height: 32))
         button.setImage(UIImage(named: "common_arrow_down"), for: .normal)
-        button.addTarget(self, action: #selector(dropDownButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(dropDownButtonTapped(sender: )), for: .touchUpInside)
         return button
     }()
 
-    @objc func dropDownButtonTapped() {
-        let popOverMenu = PopOverMenuController()
-        self.view.addSubview(popOverMenu)
+    @objc func dropDownButtonTapped(sender: UIButton) {
+
+        let popOverMenu = PopOverDisplayViewController()
+        popOverMenu.modalPresentationStyle = .popover
+        if let popOverPresentationController = popOverMenu.popoverPresentationController {
+            popOverPresentationController.permittedArrowDirections = .up
+            popOverPresentationController.sourceView = dropDownButton
+            popOverPresentationController.sourceRect = dropDownButton.bounds
+            popOverPresentationController.delegate = self
+            present(popOverMenu, animated: true, completion: nil)
+        }
+
     }
 
     override func viewDidLoad(){

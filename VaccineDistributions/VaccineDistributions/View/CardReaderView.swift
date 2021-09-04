@@ -60,7 +60,7 @@ class CardReaderView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = bg_8Color
+        self.view.backgroundColor = bgColor
         self.view.addSubview(backgroundView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -52,7 +52,7 @@ class OTPEntryView: UIViewController {
     }()
 
     @objc func exitButtonTapped() {
-        let loginPageView = LoginPageView()
+        let loginPageView = LoginPageViewLocked()
         loginPageView.modalPresentationStyle = .fullScreen
         self.present(loginPageView, animated: false, completion: nil)
     }
@@ -173,5 +173,12 @@ class OTPEntryView: UIViewController {
         backgroundView.addSubview(resendOTPButton)
         backgroundView.addSubview(confirmButton)
 
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backgroundView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            backgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            backgroundView.heightAnchor.constraint(equalToConstant: 480),
+            backgroundView.widthAnchor.constraint(equalToConstant: 472)
+        ])
     }
 }

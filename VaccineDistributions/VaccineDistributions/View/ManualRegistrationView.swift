@@ -63,7 +63,7 @@ class ManualRegistrationView: UIViewController {
         yearButton.inputView = datePicker
         yearButton.inputAccessoryView = createToolBar()
         yearButton.text = "選擇生日"
-        yearButton.font = yearButton.font?.withSize(30.0)
+        yearButton.font = yearButton.font?.withSize(24.0)
         yearButton.textColor = bkColor
     }
 
@@ -123,7 +123,7 @@ class ManualRegistrationView: UIViewController {
         idCardTextField.placeholder = "請輸入您的身分證字號"
         idCardTextField.autocapitalizationType = .none
         idCardTextField.autocorrectionType = .no
-        idCardTextField.font = idCardTextField.font?.withSize(32)
+        idCardTextField.font = idCardTextField.font?.withSize(24)
         idCardTextField.textColor = bkColor
         idCardTextField.layer.borderWidth = 0
         idCardTextField.layer.borderColor = UIColor.white.cgColor

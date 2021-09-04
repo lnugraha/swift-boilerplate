@@ -64,7 +64,7 @@ class LogoutPageView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = bg_8Color
+        self.view.backgroundColor = bgColor
         self.view.addSubview(backgroundViewPanel)
         backgroundViewPanel.addSubview(logoutButton)
         backgroundViewPanel.addSubview(cancelButton)

@@ -61,8 +61,15 @@ class ForgetPasswordView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = bg_8Color
+        self.view.backgroundColor = bgColor
         self.view.addSubview(backgroundView)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backgroundView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            backgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50),
+            backgroundView.widthAnchor.constraint(equalToConstant: 616),
+            backgroundView.heightAnchor.constraint(equalToConstant: 664)
+        ])
     }
 
 }

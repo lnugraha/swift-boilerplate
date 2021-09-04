@@ -41,7 +41,6 @@ class LoginPageView: UIViewController {
         return mainView
     }()
 
-    
     fileprivate lazy var adminButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 424, y: 168, width: 288, height: 48))
         button.backgroundColor = gyColor
@@ -50,11 +49,19 @@ class LoginPageView: UIViewController {
         button.layer.borderWidth = 2
         button.layer.borderColor = priColor.cgColor
         button.setImage(UIImage(named: "Component 125 – 3"), for: .normal)
+        button.setImage(UIImage(named: "Component 126 – 5"), for: .selected)
         button.setTitle("我是系統/轄區管理員", for: .normal)
         button.setTitleColor(bkColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
         return button
     }()
+
+    @objc func adminButtonTapped(sender: UIButton?) {
+        // let loginPageAdmin = LoginPageAdminView()
+        // loginPageAdmin.modalPresentationStyle = .fullScreen
+        // self.present(loginPageAdmin, animated: false, completion: nil)
+    }
+
     /*
     fileprivate lazy var userButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 728, y: 168, width: 240, height: 48))
@@ -118,7 +125,6 @@ class LoginPageViewLocked: LoginPageView {
         button.layer.borderColor = priColor.cgColor
         button.setImage(UIImage(named: "Component 125 – 3"), for: .normal) // If checked inside: Component 126 - 5
         button.setImage(UIImage(named: "Component 126 - 5"), for: .selected)
-        
         button.setTitle("我是里長/里幹事", for: .normal)
         button.setTitleColor(bkColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)

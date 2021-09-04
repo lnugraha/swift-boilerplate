@@ -22,6 +22,7 @@ let bk_06Color  = UIColor.init(red: 98/255.0, green: 103/255.0, blue: 129/255.0,
 let gyColor     = UIColor.init(red: 242/255.0, green: 243/255.0, blue: 247/255.0, alpha: 1.0)
 let danColor    = UIColor.init(red: 240/255.0, green:  82/255.0, blue:  75/255.0, alpha: 1.0)
 let bg_8Color   = UIColor.init(red:  23/255.0, green:  29/255.0, blue:  60/255.0, alpha: 0.8)
+let bgColor     = UIColor.init(red:  23/255.0, green:  29/255.0, blue:  60/255.0, alpha: 1.0)
 let whiteColor  = UIColor.white
 
 let edgeColor   = UIColor.init(red:  77/255.0, green: 106/255.0, blue: 141/255.0, alpha: 0.5)

@@ -33,8 +33,9 @@ class PasswordChangedAlertSuccessful: UIViewController {
     }()
 
     @objc func passwordChangedButtonTapped() {
-        
-        
+        let mainPageView = MainPageView()
+        mainPageView.modalPresentationStyle = .fullScreen
+        present(mainPageView, animated: false, completion: nil)
     }
 
     override func viewDidLoad() {

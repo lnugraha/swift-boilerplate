@@ -101,7 +101,7 @@ class RegistrationSelectionView: UIViewController {
         let button = UIButton(frame: CGRect(x: 216, y: 608, width: 272, height: 72))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.sizeToFit()
-        button.setTitle("掃描台北痛QRcode", for: .normal)
+        button.setTitle("掃描台北通QRcode", for: .normal)
         button.backgroundColor = UIColor.white
         button.setTitleColor(bkColor, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24.0)
