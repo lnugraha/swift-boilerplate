@@ -28,5 +28,8 @@ Projects included:
 ## 4. Bookstore Catalogue using TableView ##
 
 <table>
-  <td> <img src="./assets/simulation_iphone_11_pro.gif" height="600">
+<tr>
+<td> <img src="./assets/bookstore_catalogue_02.png">
+<td> <img src="./assets/bookstore_catalogue_03.png">
+</tr>
 </table>
