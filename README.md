@@ -26,8 +26,8 @@ Projects included:
 - Users can also click at any book title that is currently sold to view its summary
 <table>
 <tr>
-<td> <img src="./assets/bookstore_catalogue_02.png">
-<td> <img src="./assets/bookstore_catalogue_03.png">
+<td> <img src="./assets/bookstore_catalogue_02.png" width="350">
+<td> <img src="./assets/bookstore_catalogue_03.png" width="350">
 </tr>
 </table>
 
