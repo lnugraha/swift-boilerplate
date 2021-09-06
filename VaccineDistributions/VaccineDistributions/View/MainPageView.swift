@@ -50,9 +50,51 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
         accountHolder.backgroundColor = priColor
 
         view.addSubview(imageLogo)
+        view.addSubview(imageLabel)
         view.addSubview(accountLogo)
         view.addSubview(accountHolder)
-        view.addSubview(imageLabel)
+        view.addSubview(dropDownButton)
+        
+        imageLogo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageLogo.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
+            imageLogo.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -496),
+            imageLogo.widthAnchor.constraint(equalToConstant: 48),
+            imageLogo.heightAnchor.constraint(equalToConstant: 48)
+        ])
+
+        imageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
+            imageLabel.leadingAnchor.constraint(equalTo: imageLogo.trailingAnchor, constant: 8),
+            imageLabel.widthAnchor.constraint(equalToConstant: 500),
+            imageLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
+        accountLogo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            accountLogo.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
+            accountLogo.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 326),
+            accountLogo.widthAnchor.constraint(equalToConstant: 32),
+            accountLogo.heightAnchor.constraint(equalToConstant: 32)
+        ])
+
+        accountHolder.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            accountHolder.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
+            accountHolder.leadingAnchor.constraint(equalTo: accountLogo.trailingAnchor, constant: 4),
+            accountHolder.widthAnchor.constraint(equalToConstant: 86),
+            accountHolder.heightAnchor.constraint(equalToConstant: 32)
+        ])
+
+        dropDownButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dropDownButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
+            dropDownButton.leadingAnchor.constraint(equalTo: accountHolder.trailingAnchor ,constant: 4),
+            dropDownButton.widthAnchor.constraint(equalToConstant: 32),
+            dropDownButton.heightAnchor.constraint(equalToConstant:  32)
+        ])
+
         return view
     }()
 
@@ -81,15 +123,23 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
         super.viewDidLoad()
         self.view.addSubview(backgroundView)
         self.view.addSubview(bannerView)
-        bannerView.addSubview(dropDownButton)
+
         let topBannerLaber: UIView = createTopBannerLabels()
         backgroundView.addSubview(topBannerLaber)
-        
+
+        topBannerLaber.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topBannerLaber.topAnchor.constraint(equalTo: self.bannerView.bottomAnchor, constant: 25),
+            topBannerLaber.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            topBannerLaber.widthAnchor.constraint(equalToConstant: 891),
+            topBannerLaber.heightAnchor.constraint(equalToConstant: 24)
+        ])
+
         var rowButtons = [UIButton]()
         for i in 0..<5 {
             var tempButton = ClinicTableCells.addClinicalDataLabel(position: i)
             let tempLabels = ClinicalProperties.createClinicLabels(yPosition: 24.0, clinics: sampleData[i])
-            
+
             if tempLabels.vaccine.text == "肺鏈/流感" {
                 tempButton.addTarget(self, action: #selector(tapDeadButton), for: .touchUpInside)
             } else {
@@ -99,6 +149,14 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
             ClinicalProperties.appendLabelsToButton(clinicalLabel: tempLabels, rowButton: &tempButton)
             rowButtons.append(tempButton)
             backgroundView.addSubview(rowButtons[i])
+
+            rowButtons[i].translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                rowButtons[i].topAnchor.constraint(equalTo: self.bannerView.bottomAnchor, constant: 64 + 112*CGFloat(i)),
+                rowButtons[i].centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                rowButtons[i].heightAnchor.constraint(equalToConstant: 96),
+                rowButtons[i].widthAnchor.constraint(equalToConstant: 992)
+            ])
         }
 
     }
@@ -118,42 +176,42 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
     func createTopBannerLabels() -> UIView {
         let view = UIView(frame: CGRect(x: 85, y: 169, width: 891, height: 26))
         view.backgroundColor = gyColor
-        
+
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 52, height: 26))
         titleLabel.textColor = bkColor
         titleLabel.text = "標題"
-        titleLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+
         let vaccineLabel = UILabel(frame: CGRect(x: 159, y: 0, width: 100, height: 26))
         vaccineLabel.textColor = bkColor
         vaccineLabel.text = "疫苗類型"
-        vaccineLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        vaccineLabel.font = UIFont.boldSystemFont(ofSize: 24)
+
         let regionLabel = UILabel(frame: CGRect(x: 316, y: 0, width: 52, height: 26))
         regionLabel.textColor = bkColor
         regionLabel.text = "區域"
-        regionLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        regionLabel.font = UIFont.boldSystemFont(ofSize: 24)
+
         let registrationLabel = UILabel(frame: CGRect(x: 432, y: 0, width: 100, height: 26))
         registrationLabel.textColor = bkColor
         registrationLabel.text = "報名時間"
-        registrationLabel.font = UIFont.systemFont(ofSize: 24)
+        registrationLabel.font = UIFont.boldSystemFont(ofSize: 24)
 
         let quotaLabel = UILabel(frame: CGRect(x: 600, y: 0, width: 52, height: 26))
         quotaLabel.textColor = bkColor
         quotaLabel.text = "名額"
-        quotaLabel.font = UIFont.systemFont(ofSize: 24)
+        quotaLabel.font = UIFont.boldSystemFont(ofSize: 24)
 
         let passedLabel = UILabel(frame: CGRect(x: 668, y: 0, width: 100, height: 26))
         passedLabel.textColor = bkColor
         passedLabel.text = "複審通過"
-        passedLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        passedLabel.font = UIFont.boldSystemFont(ofSize: 24)
+
         let appointmentLabel = UILabel(frame: CGRect(x: 795, y: 0, width: 100, height: 26))
         appointmentLabel.textColor = bkColor
         appointmentLabel.text = "建立日期"
-        appointmentLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        appointmentLabel.font = UIFont.boldSystemFont(ofSize: 24)
+
         view.addSubview(titleLabel)
         view.addSubview(vaccineLabel)
         view.addSubview(regionLabel)

@@ -5,7 +5,10 @@ Projects included:
 - Designed for a regular iPad that is used to monitor vaccine or medicine distribution from all registered clinics in Taipei
 - The app can be scaled forward by relying on REST API, and the app can also be scaled backwar by relying on Core Data to accommodate rural areas where WiFi signals are still limited
 <table>
-  <td> <img src="./assets/ipad_demo.gif"> </td>
+<tr>
+  <td> <img src="./assets/vaccine_system_mainpage.png">
+  <td> <img src="./assets/vaccine_system_registration.png">
+</tr>
 </table>
 
 ## 2. Card Scanner for Text Identification using Machine Learning Framework in Core ML ##

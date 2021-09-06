@@ -179,7 +179,23 @@ class RegisteredPatientsView: UIViewController {
         topBannerView.addSubview(warningFlag)
         backgroundScrollView.addSubview(registerButton)
         backgroundScrollView.addSubview(topBannerLabel)
-        
+
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            registerButton.topAnchor.constraint(equalTo: self.topBannerView.topAnchor, constant: 153),
+            registerButton.leadingAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 280),
+            registerButton.heightAnchor.constraint(equalToConstant: 64),
+            registerButton.widthAnchor.constraint(equalToConstant: 184)
+        ])
+
+        topBannerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topBannerLabel.topAnchor.constraint(equalTo: self.topBannerView.bottomAnchor, constant: 56),
+            topBannerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            topBannerLabel.heightAnchor.constraint(equalToConstant: 26),
+            topBannerLabel.widthAnchor.constraint(equalToConstant: 905)
+        ])
+
         var rowButtons = [UIButton]()
         for i in 0..<5 {
             var tempButton = ClinicTableCells.registeredPatientCell(position: i)
@@ -187,6 +203,15 @@ class RegisteredPatientsView: UIViewController {
             ClinicTableCells.appendLabelsToButton(patientLabels: tempLabels, rowButton: &tempButton)
             rowButtons.append(tempButton)
             backgroundScrollView.addSubview(rowButtons[i])
+            
+            rowButtons[i].translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                rowButtons[i].topAnchor.constraint(equalTo: self.topBannerView.bottomAnchor, constant: 103 + 112*CGFloat(i)),
+                rowButtons[i].centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                rowButtons[i].widthAnchor.constraint(equalToConstant: 992),
+                rowButtons[i].heightAnchor.constraint(equalToConstant: 96)
+            ])
+
         }
 
     }

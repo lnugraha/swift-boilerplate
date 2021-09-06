@@ -225,13 +225,13 @@ class ClinicTableCells {
     
     // MARK: This button is dedicated for displaying all patients that have registered for vaccine appointment
     class public func registeredPatientCell(position: Int) -> UIButton {
-        let registeredPatient = UIButton(frame: CGRect(x: 16, y: (287 + position*112), width: Int(UIScreen.main.bounds.width)-32, height: 96))
+        let registeredPatient = UIButton(frame: CGRect(x: 16, y: (287 + position*112), width: 992, height: 96))
         registeredPatient.backgroundColor = UIColor.white
         registeredPatient.layer.cornerRadius = 16
         registeredPatient.clipsToBounds = true
         return registeredPatient
     }
-    
+
     // MARK: Append all necessary registered patient labels to the button cell
     class public func appendLabelsToButton(patientLabels: PatientLabels, rowButton: inout UIButton) {
         rowButton.addSubview(patientLabels.date)
@@ -244,118 +244,128 @@ class ClinicTableCells {
         rowButton.addSubview(patientLabels.inspection)
         rowButton.addSubview(patientLabels.printButton)
 
-//        patientLabels.printButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            patientLabels.printButton.topAnchor.constraint(equalTo: rowButton.topAnchor, constant: 20.0),
-//            patientLabels.printButton.rightAnchor.constraint(equalTo: rowButton.rightAnchor, constant: -12.0),
-//            patientLabels.printButton.widthAnchor.constraint(equalToConstant: 144),
-//            patientLabels.printButton.heightAnchor.constraint(equalToConstant: 56)
-//        ])
     }
 
     class public func topBannerTitle(quota: Int, max: Int, inspected: Int, clinicName: String, clinicRegion: String, vaccineName: String, implementationDateTime: String, registrationDateTime: String, forCovid: Bool) -> UILabel {
-            let fullLabel = UILabel()       // House for both labels below
-            let warningLabel = UILabel()    // When appointment has exceeded quota
-            let bannerLabel = UILabel()     // Clinic name
-            let regionLabel = UILabel()     // Clinic address
-            let vacantLabel = UILabel()     // 開放名額
-            let inspectLabel = UILabel()    // 複檢通過人數
-            let vaccineLabel = UILabel()    // 疫苗廠牌：
-            let setupDate = UILabel()       // 設站起訖時間：
-            let registrationDate = UILabel()// 報名開放起迄時間：
-            vaccineLabel.frame = CGRect(x: 88, y: 96, width: 445, height: 16)
-            vaccineLabel.textColor = UIColor.white
-            vaccineLabel.font = UIFont(name:"Arial", size:16.0)
+        let fullLabel = UILabel()       // House for both labels below
+        let warningLabel = UILabel()    // When appointment has exceeded quota
+        let bannerLabel = UILabel()     // Clinic name
+        let regionLabel = UILabel()     // Clinic address
+        let vacantLabel = UILabel()     // 開放名額
+        let inspectLabel = UILabel()    // 複檢通過人數
+        let vaccineLabel = UILabel()    // 疫苗廠牌：
+        let setupDate = UILabel()       // 設站起訖時間：
+        let registrationDate = UILabel()// 報名開放起迄時間：
+        vaccineLabel.frame = CGRect(x: 88, y: 96, width: 445, height: 16)
+        vaccineLabel.textColor = UIColor.white
+        vaccineLabel.font = UIFont(name:"Arial", size:16.0)
 
-            setupDate.frame = CGRect(x: 88, y: 114, width: 445, height: 16)
-            setupDate.textColor = UIColor.white
-            setupDate.font = UIFont(name:"Arial", size:16.0)
+        setupDate.frame = CGRect(x: 88, y: 114, width: 445, height: 16)
+        setupDate.textColor = UIColor.white
+        setupDate.font = UIFont(name:"Arial", size:16.0)
 
-            registrationDate.frame = CGRect(x: 88, y: 132, width: 445, height: 16)
-            registrationDate.textColor = UIColor.white
-            registrationDate.font = UIFont(name:"Arial", size:16.0)
+        registrationDate.frame = CGRect(x: 88, y: 132, width: 445, height: 16)
+        registrationDate.textColor = UIColor.white
+        registrationDate.font = UIFont(name:"Arial", size:16.0)
 
-            if forCovid == true {
-                vaccineLabel.text = "疫苗廠牌：\(vaccineName)"
-                setupDate.text = "設站起訖時間：\(implementationDateTime)"
-                registrationDate.text = "報名開放起迄時間：\(registrationDateTime)"
-            } else {
-                vaccineLabel.text = ""
-                setupDate.text = "設站起訖時間：\(implementationDateTime)"
-                registrationDate.text = "報名開放起迄時間：\(registrationDateTime)"
-            }
-
-            fullLabel.addSubview(vaccineLabel)
-            fullLabel.addSubview(setupDate)
-            fullLabel.addSubview(registrationDate)
-            // =========================================================
-            fullLabel.numberOfLines = 0
-            fullLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
-
-            bannerLabel.font = UIFont(name:"Arial", size:24.0)
-            bannerLabel.text = clinicName
-            regionLabel.font = UIFont(name:"Arial", size:16.0)
-            regionLabel.text = clinicRegion
-
-            vacantLabel.frame = CGRect(x: 836, y: 24, width: 160, height: 20)
-            vacantLabel.font = UIFont(name:"Arial", size:16.0)
-            vacantLabel.textColor = UIColor.white
-            vacantLabel.text = "開放名額：" + String(quota) + "/" + String(max)
-
-            inspectLabel.frame = CGRect(x: 836, y: 51, width: 160, height: 20)
-            inspectLabel.font = UIFont(name:"Arial", size:16.0)
-            inspectLabel.textColor = UIColor.white
-            inspectLabel.text = "複檢通過人數：" + String(inspected)
-
-            if quota >= max {
-                // Quota has been full
-                warningLabel.backgroundColor = danColor
-                warningLabel.frame = CGRect(x: 88, y: 24, width: 144, height: 48)
-                warningLabel.textColor = priColor
-                warningLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-                warningLabel.text = "名額已滿！"
-                warningLabel.textAlignment = NSTextAlignment.center
-                bannerLabel.frame = CGRect(x: 256, y: 24, width: 860, height: 24)
-                regionLabel.frame = CGRect(x: 256, y: 56, width: 860, height: 18)
-            } else {
-                // There are still some quota left
-                warningLabel.backgroundColor = priColor
-                warningLabel.textColor = priColor
-                warningLabel.font = UIFont.systemFont(ofSize: 24)
-                warningLabel.frame = CGRect(x: 88, y: 24, width: 0, height: 0)
-                warningLabel.text = ""
-                bannerLabel.frame = CGRect(x: 88, y: 24, width: 860, height: 24)
-                regionLabel.frame = CGRect(x: 88, y: 56, width: 860, height: 18)
-            }
-
-            bannerLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
-            regionLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
-
-            bannerLabel.textColor = UIColor.white
-            regionLabel.textColor = UIColor.white
-
-            fullLabel.addSubview(regionLabel)
-            fullLabel.addSubview(warningLabel)
-            fullLabel.addSubview(bannerLabel)
-            fullLabel.addSubview(vacantLabel)
-            fullLabel.addSubview(inspectLabel)
-
-            vacantLabel.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                vacantLabel.rightAnchor.constraint(equalTo: fullLabel.rightAnchor, constant: UIScreen.main.bounds.width - 48.0),
-                vacantLabel.topAnchor.constraint(equalTo: fullLabel.topAnchor, constant: 24),
-                vacantLabel.widthAnchor.constraint(equalToConstant: 160),
-                vacantLabel.heightAnchor.constraint(equalToConstant: 20),
-            ])
-
-            inspectLabel.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                inspectLabel.rightAnchor.constraint(equalTo: fullLabel.rightAnchor, constant: UIScreen.main.bounds.width - 48.0),
-                inspectLabel.topAnchor.constraint(equalTo: fullLabel.topAnchor, constant: 51),
-                inspectLabel.widthAnchor.constraint(equalToConstant: 160),
-                inspectLabel.heightAnchor.constraint(equalToConstant: 20),
-            ])
-            return fullLabel
+        if forCovid == true {
+            vaccineLabel.text = "疫苗廠牌：\(vaccineName)"
+            setupDate.text = "設站起訖時間：\(implementationDateTime)"
+            registrationDate.text = "報名開放起迄時間：\(registrationDateTime)"
+        } else {
+            vaccineLabel.text = ""
+            setupDate.text = "設站起訖時間：\(implementationDateTime)"
+            registrationDate.text = "報名開放起迄時間：\(registrationDateTime)"
         }
-    
+
+        fullLabel.addSubview(vaccineLabel)
+        fullLabel.addSubview(setupDate)
+        fullLabel.addSubview(registrationDate)
+        // =========================================================
+        fullLabel.numberOfLines = 0
+        fullLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+
+        bannerLabel.font = UIFont(name:"Arial", size:24.0)
+        bannerLabel.text = clinicName
+        regionLabel.font = UIFont(name:"Arial", size:16.0)
+        regionLabel.text = clinicRegion
+
+        vacantLabel.frame = CGRect(x: 836, y: 24, width: 160, height: 20)
+        vacantLabel.font = UIFont(name:"Arial", size:16.0)
+        vacantLabel.textColor = UIColor.white
+        vacantLabel.text = "開放名額：" + String(quota) + "/" + String(max)
+
+        inspectLabel.frame = CGRect(x: 836, y: 51, width: 160, height: 20)
+        inspectLabel.font = UIFont(name:"Arial", size:16.0)
+        inspectLabel.textColor = UIColor.white
+        inspectLabel.text = "複檢通過人數：" + String(inspected)
+
+        if quota >= max {
+            // Quota has been full
+            warningLabel.backgroundColor = danColor
+            warningLabel.frame = CGRect(x: 88, y: 24, width: 144, height: 48)
+            warningLabel.textColor = priColor
+            warningLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+            warningLabel.text = "名額已滿！"
+            warningLabel.textAlignment = NSTextAlignment.center
+            bannerLabel.frame = CGRect(x: 256, y: 24, width: 860, height: 24)
+            regionLabel.frame = CGRect(x: 256, y: 56, width: 860, height: 18)
+        } else {
+            // There are still some quota left
+            warningLabel.backgroundColor = priColor
+            warningLabel.textColor = priColor
+            warningLabel.font = UIFont.systemFont(ofSize: 24)
+            warningLabel.frame = CGRect(x: 88, y: 24, width: 0, height: 0)
+            warningLabel.text = ""
+            bannerLabel.frame = CGRect(x: 88, y: 24, width: 860, height: 24)
+            regionLabel.frame = CGRect(x: 88, y: 56, width: 860, height: 18)
+        }
+
+        bannerLabel.font = UIFont.boldSystemFont(ofSize: 24.0)
+        regionLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+
+        bannerLabel.textColor = UIColor.white
+        regionLabel.textColor = UIColor.white
+
+        fullLabel.addSubview(regionLabel)
+        fullLabel.addSubview(warningLabel)
+        fullLabel.addSubview(bannerLabel)
+
+        bannerLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bannerLabel.leadingAnchor.constraint(equalTo: fullLabel.leadingAnchor, constant: 88),
+            bannerLabel.topAnchor.constraint(equalTo: fullLabel.topAnchor, constant: 40),
+            bannerLabel.widthAnchor.constraint(equalToConstant: 860),
+            bannerLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
+
+        regionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            regionLabel.leadingAnchor.constraint(equalTo: fullLabel.leadingAnchor, constant: 88),
+            regionLabel.topAnchor.constraint(equalTo: bannerLabel.bottomAnchor, constant: 8),
+            regionLabel.widthAnchor.constraint(equalToConstant: 860),
+            regionLabel.heightAnchor.constraint(equalToConstant: 18)
+        ])
+
+        fullLabel.addSubview(vacantLabel)
+        fullLabel.addSubview(inspectLabel)
+        
+        vacantLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            vacantLabel.trailingAnchor.constraint(equalTo: fullLabel.trailingAnchor, constant: FULL_WIDTH-48),
+            vacantLabel.topAnchor.constraint(equalTo: fullLabel.topAnchor, constant: 40),
+            vacantLabel.widthAnchor.constraint(equalToConstant: 160),
+            vacantLabel.heightAnchor.constraint(equalToConstant: 20),
+        ])
+        
+        inspectLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            inspectLabel.trailingAnchor.constraint(equalTo: fullLabel.trailingAnchor, constant: FULL_WIDTH-48),
+            inspectLabel.topAnchor.constraint(equalTo: vacantLabel.bottomAnchor, constant: 11),
+            inspectLabel.widthAnchor.constraint(equalToConstant: 160),
+            inspectLabel.heightAnchor.constraint(equalToConstant: 20),
+        ])
+        return fullLabel
+    }
+
 }
