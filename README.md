@@ -26,7 +26,10 @@ Projects included:
 </table>
 
 ## 4. Bookstore Catalogue using TableView ##
-
+- Using login credential to retrieve information stored in API
+- In this app, users can browse through bookstores listed as table cells
+- Users can navigate through the app by clicking at a particular bookstore to view what books that are sold
+- Users can also click at any book title that is currently sold to view its summary
 <table>
 <tr>
 <td> <img src="./assets/bookstore_catalogue_02.png">
