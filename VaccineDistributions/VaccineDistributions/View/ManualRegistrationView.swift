@@ -99,6 +99,7 @@ class ManualRegistrationView: UIViewController {
         backgroundView.layer.cornerRadius = 16
         backgroundView.clipsToBounds = true
         backgroundView.backgroundColor = UIColor.white
+        self.view.backgroundColor = bgColor
         view.addSubview(backgroundView)
         
         let titleLabel = UILabel(frame: CGRect(x: 32, y: 36, width: 400, height: 32))

@@ -40,6 +40,7 @@ class PasswordChangedAlertSuccessful: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = bgColor
         self.view.addSubview(passwordChangedButton)
         passwordChangedButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -64,7 +65,7 @@ class SuccessChangePasswordVC: UIViewController {
         let checkLogo = UIImageView(frame: CGRect(x: 148, y: 32, width: 96, height: 96))
         checkLogo.image = UIImage(named: "alert_success")
 
-        let successMessage = UILabel(frame: CGRect(x: 33, y: 152, width: 326, height: 25))
+        let successMessage = UILabel(frame: CGRect(x: 33, y: 152, width: 340, height: 25))
         successMessage.text = "您的密碼已更新，請重新登入 !"
         successMessage.font = UIFont.boldSystemFont(ofSize: 24.0)
         successMessage.textColor = bkColor
@@ -93,7 +94,7 @@ class SuccessChangePasswordVC: UIViewController {
 
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.view.backgroundColor = bg_8Color
+        self.view.backgroundColor = bgColor
         self.view.addSubview(backgroundViewPanel)
         backgroundViewPanel.addSubview(proceedButton)
         backgroundViewPanel.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +112,7 @@ class RegistrationSuccessful: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let backgroundView = UIView(frame: CGRect(x: 296, y: 228, width: 432, height: 312))
-        self.view.backgroundColor = bg_8Color
+        self.view.backgroundColor = bgColor
 
         let successfulImage = UIImageView(frame: CGRect(x: 164, y: 32, width: 96, height: 96))
         successfulImage.image = UIImage(named: "alert_success")

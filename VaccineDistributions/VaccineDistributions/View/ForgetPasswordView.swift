@@ -66,7 +66,7 @@ class ForgetPasswordView: UIViewController {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             backgroundView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            backgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -50),
+            backgroundView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
             backgroundView.widthAnchor.constraint(equalToConstant: 616),
             backgroundView.heightAnchor.constraint(equalToConstant: 664)
         ])

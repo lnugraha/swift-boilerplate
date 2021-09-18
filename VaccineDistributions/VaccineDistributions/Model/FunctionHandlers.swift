@@ -29,3 +29,8 @@ let edgeColor   = UIColor.init(red:  77/255.0, green: 106/255.0, blue: 141/255.0
 
 let FULL_WIDTH  = UIScreen.main.bounds.width
 let FULL_HEIGHT = UIScreen.main.bounds.height
+
+let ABSOLUTE_HEIGHT = 768
+let ABSOLUTE_WIDTH = 1024
+
+let TEXT_SCALING_FACTOR = CGFloat(FULL_HEIGHT)/CGFloat(ABSOLUTE_HEIGHT)

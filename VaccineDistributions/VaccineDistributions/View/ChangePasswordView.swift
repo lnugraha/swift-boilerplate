@@ -126,6 +126,9 @@ class ChangePasswordView: UIViewController {
         view.addSubview(newPwdLabel)
         view.addSubview(newPasswordBox)
         newPasswordBox.addSubview(newPasswordTextField)
+        view.addSubview(topWarningLabel)
+        view.addSubview(middleWarningLabel)
+        view.addSubview(bottomWarningLabel)
         view.addSubview(confirmPwdLabel)
         view.addSubview(confirmPasswordBox)
         confirmPasswordBox.addSubview(confirmPasswordTextField)
@@ -152,7 +155,7 @@ class ChangePasswordView: UIViewController {
         } else if newPasswordTextField.text != confirmPasswordTextField.text {
             bottomWarningLabel.text = "密碼不一致，請重新輸入！"
         } else {
-            let passwordChangedAlertSuccessful = PasswordChangedAlertSuccessful()
+            let passwordChangedAlertSuccessful = /* SuccessChangePasswordVC() */ PasswordChangedAlertSuccessful()
             passwordChangedAlertSuccessful.modalPresentationStyle = .fullScreen
             present(passwordChangedAlertSuccessful, animated: false, completion: nil)
         }
