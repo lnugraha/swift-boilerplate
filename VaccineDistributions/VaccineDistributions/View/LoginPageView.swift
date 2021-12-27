@@ -116,6 +116,10 @@ class LoginPageView: UIViewController {
         backgroundView.addSubview(forgetPasswordButton)
         backgroundView.addSubview(warningLabel)
 
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+
         forgetPasswordButton.translatesAutoresizingMaskIntoConstraints = false
         warningLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -261,7 +265,7 @@ class LoginPageViewUnlocked: LoginPageView {
 
             nameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             nameTextField.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 35),
-            nameTextField.heightAnchor.constraint(equalToConstant: 24*TEXT_SCALING_FACTOR),
+            nameTextField.heightAnchor.constraint(equalToConstant: 26*TEXT_SCALING_FACTOR),
             nameTextField.widthAnchor.constraint(equalToConstant: 560),
         ])
 
@@ -291,7 +295,7 @@ class LoginPageViewUnlocked: LoginPageView {
 
             passwordTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             passwordTextField.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 35),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 24),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 24*TEXT_SCALING_FACTOR),
             passwordTextField.widthAnchor.constraint(equalToConstant: 560),
         ])
 
@@ -491,7 +495,7 @@ class LoginPageViewAdminUnlocked: LoginPageView {
 
             passwordTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             passwordTextField.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 35),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 24),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 26*TEXT_SCALING_FACTOR),
             passwordTextField.widthAnchor.constraint(equalToConstant: 560),
         ])
         

@@ -34,7 +34,7 @@ class RegisteredPatientsView: UIViewController {
     // MARK: Top bottom page that houses all registered patient information
     // TODO: What if the number of patients registered is more than five
     private lazy var backgroundScrollView: UIScrollView = {
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: -20, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        let scrollView = UIScrollView(frame: CGRect(x: 0, y: -30, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         scrollView.backgroundColor = gyColor
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 850)
         scrollView.addSubview(topBannerView)

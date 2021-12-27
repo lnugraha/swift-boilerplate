@@ -24,7 +24,7 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
     }()
 
     private lazy var bannerView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 144))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 144*HEIGHT_SCALING_FACTOR))
         view.backgroundColor = priColor
         view.layer.cornerRadius = 32
         view.layer.maskedCorners = [.layerMinXMaxYCorner]
@@ -37,7 +37,7 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
         imageLabel.text = "里辦疫苗接種便民資訊系統"
         imageLabel.textColor = UIColor.white
         imageLabel.backgroundColor = priColor
-        imageLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        imageLabel.font = UIFont.boldSystemFont(ofSize: 28*TEXT_SCALING_FACTOR)
 
         let accountLogo = UIImageView(frame: CGRect(x: FULL_WIDTH-176, y: 56, width: 32, height: 32))
         accountLogo.image = UIImage(named: "Component 163 – 1")
@@ -45,7 +45,7 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
         let accountHolder = UILabel(frame: CGRect(x: FULL_WIDTH-142, y: 56, width: 86, height: 32))
         accountHolder.text = "陳德禮"
         accountHolder.textAlignment = .center
-        accountHolder.font = UIFont.systemFont(ofSize: 28)
+        accountHolder.font = UIFont.systemFont(ofSize: 28*TEXT_SCALING_FACTOR)
         accountHolder.textColor = UIColor.white
         accountHolder.backgroundColor = priColor
 
@@ -54,45 +54,45 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
         view.addSubview(accountLogo)
         view.addSubview(accountHolder)
         view.addSubview(dropDownButton)
-        
+    
         imageLogo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageLogo.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
-            imageLogo.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: -496),
-            imageLogo.widthAnchor.constraint(equalToConstant: 48),
-            imageLogo.heightAnchor.constraint(equalToConstant: 48)
+            imageLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageLogo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16*WIDTH_SCALING_FACTOR),
+            imageLogo.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 48/CGFloat(144)),
+            imageLogo.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 48/CGFloat(144))
         ])
 
         imageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
-            imageLabel.leadingAnchor.constraint(equalTo: imageLogo.trailingAnchor, constant: 8),
-            imageLabel.widthAnchor.constraint(equalToConstant: 500),
-            imageLabel.heightAnchor.constraint(equalToConstant: 40)
+            imageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageLabel.leadingAnchor.constraint(equalTo: imageLogo.trailingAnchor, constant: 8*WIDTH_SCALING_FACTOR),
+            imageLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 500/CGFloat(ABSOLUTE_WIDTH)),
+            imageLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 40/CGFloat(144))
         ])
 
         accountLogo.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            accountLogo.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
-            accountLogo.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 326),
-            accountLogo.widthAnchor.constraint(equalToConstant: 32),
-            accountLogo.heightAnchor.constraint(equalToConstant: 32)
+            accountLogo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            accountLogo.trailingAnchor.constraint(equalTo: accountHolder.leadingAnchor, constant: -4*WIDTH_SCALING_FACTOR),
+            accountLogo.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 32/CGFloat(144)),
+            accountLogo.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 32/CGFloat(144))
         ])
 
         accountHolder.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            accountHolder.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
-            accountHolder.leadingAnchor.constraint(equalTo: accountLogo.trailingAnchor, constant: 4),
-            accountHolder.widthAnchor.constraint(equalToConstant: 86),
-            accountHolder.heightAnchor.constraint(equalToConstant: 32)
+            accountHolder.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            accountHolder.trailingAnchor.constraint(equalTo: dropDownButton.leadingAnchor, constant: -4*WIDTH_SCALING_FACTOR),
+            accountHolder.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 86/CGFloat(144)),
+            accountHolder.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 32/CGFloat(144))
         ])
 
         dropDownButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            dropDownButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 48),
-            dropDownButton.leadingAnchor.constraint(equalTo: accountHolder.trailingAnchor ,constant: 4),
-            dropDownButton.widthAnchor.constraint(equalToConstant: 32),
-            dropDownButton.heightAnchor.constraint(equalToConstant:  32)
+            dropDownButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            dropDownButton.trailingAnchor.constraint(equalTo: view.trailingAnchor ,constant: -16*WIDTH_SCALING_FACTOR),
+            dropDownButton.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 32/CGFloat(144)),
+            dropDownButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 32/CGFloat(144))
         ])
 
         return view
@@ -152,10 +152,10 @@ class MainPageView: UIViewController, UIPopoverPresentationControllerDelegate {
 
             rowButtons[i].translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                rowButtons[i].topAnchor.constraint(equalTo: self.bannerView.bottomAnchor, constant: 64 + 112*CGFloat(i)),
+                rowButtons[i].topAnchor.constraint(equalTo: self.bannerView.bottomAnchor, constant: 64*HEIGHT_SCALING_FACTOR + 112*CGFloat(i)),
                 rowButtons[i].centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 rowButtons[i].heightAnchor.constraint(equalToConstant: 96),
-                rowButtons[i].widthAnchor.constraint(equalToConstant: 992)
+                rowButtons[i].widthAnchor.constraint(equalToConstant: 992*WIDTH_SCALING_FACTOR)
             ])
         }
 
